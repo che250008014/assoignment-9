@@ -1,0 +1,32 @@
+#include <iostream>
+
+// Define a structure named 'Point' with two float members, 'x' and 'y'.
+struct Point {
+    float x;
+    float y;
+};
+
+int main() {
+    const int NUM_POINTS = 7;
+    Point points[NUM_POINTS];
+    int firstQuadrantCount = 0;
+
+    // Read the coordinates for 7 points from user input.
+    std::cout << "Enter the x and y coordinates for 7 points:" << std::endl;
+    for (int i = 0; i < NUM_POINTS; ++i) {
+        std::cout << "Point " << i + 1 << " (x y): ";
+        std::cin >> points[i].x >> points[i].y;
+    }
+
+    // Count how many points lie in the first quadrant.
+    for (int i = 0; i < NUM_POINTS; ++i) {
+        if (points[i].x > 0 && points[i].y > 0) {
+            firstQuadrantCount++;
+        }
+    }
+
+    // Display the results.
+    std::cout << "\nThere are " << firstQuadrantCount << " points in the first quadrant." << std::endl;
+
+    return 0;
+}
