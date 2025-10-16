@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+#include <limits>
+
+struct SalesRecord {
+    std::string month;
+    float amount;
+};
+
+int main() {
+    SalesRecord annualSales[12];
+
+    std::cout << "Enter the month and sales amount for 12 months." << std::endl;
+    for (int i = 0; i < 12; ++i) {
+        std::cout << "Enter month name: ";
+        std::cin >> annualSales[i].month;
+        std::cout << "Enter sales amount for " << annualSales[i].month << ": ";
+        std::cin >> annualSales[i].amount;
+    }
+
+    // Initialize both pointers to the first element
+    SalesRecord* minSalesMonth = &annualSales[0];
+    SalesRecord* maxSalesMonth = &annualSales[0];
+
+    // Start loop from the second element
+    for (int i = 1; i < 12; ++i) {
+        if (annualSales[i].amount > maxSalesMonth->amount) {
+            maxSalesMonth = &annualSales[i];
+        }
+        if (annualSales[i].amount < minSalesMonth->amount) {
+            minSalesMonth = &annualSales[i];
+        }
+    }
+
+    std::cout << "\n--- Sales Summary ---\n";
+    std::cout << "Month with maximum sales: " << maxSalesMonth->month << " with " << maxSalesMonth->amount << std::endl;
+    std::cout << "Month with minimum sales: " << minSalesMonth->month << " with " << minSalesMonth->amount << std::endl;
+
+    return 0;
+}
